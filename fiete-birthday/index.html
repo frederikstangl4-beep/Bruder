@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d0c0f">
+  <meta name="description" content="Ein kleines Geburtstagsrätsel für Fiete: Gleichung lösen, Party starten, Floss tanzen.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Fiete 22">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%230d0c0f'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-style='italic' font-size='29' fill='%23d9ff55' text-anchor='middle'%3E22%3C/text%3E%3C/svg%3E">
+  <title>Fietes Geburtstagsrätsel</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="backdrop-orb orb-one"></div>
+    <div class="backdrop-orb orb-two"></div>
+    <div class="backdrop-orb orb-three"></div>
+    <div class="backdrop-grid"></div>
+    <span class="float-glyph glyph-one">&pi;</span>
+    <span class="float-glyph glyph-two">&radic;</span>
+    <span class="float-glyph glyph-three">&infin;</span>
+    <span class="float-glyph glyph-four">+</span>
+    <span class="float-glyph glyph-five">&sum;</span>
+    <span class="float-glyph glyph-six">&divide;</span>
+    <span class="backdrop-number">22</span>
+  </div>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <main class="page">
+    <section class="quiz-screen" id="quizScreen">
+      <header class="site-header">
+        <a class="brand" href="#" aria-label="Fiete wird 22">
+          <span class="brand-mark">22</span>
+          <span class="brand-copy">FIETE<br>BIRTHDAY</span>
+        </a>
+        <p class="party-status"><span class="status-dot"></span> Die Party steht bereit</p>
+      </header>
+
+      <div class="hero">
+        <section class="intro" aria-labelledby="pageTitle">
+          <p class="eyebrow"><span class="eyebrow-line"></span> Mission 22 / Geburtstag</p>
+          <h1 id="pageTitle">Erst rechnen.<br><span class="accent-word">Dann feiern.</span></h1>
+          <p class="intro-copy">Fiete, du wirst 22. Vor der Tanzfläche steht nur noch eine letzte Gleichung. Kein Druck. Nur eine Party.</p>
+
+          <div class="ticket">
+            <div class="ticket-main">
+              <p class="ticket-label">Eintritt</p>
+              <p class="ticket-value">Nur mit richtiger Antwort</p>
+              <div class="ticket-meta">
+                <span>Dresscode: floss-fähig</span>
+                <span>Party: garantiert</span>
+              </div>
+            </div>
+            <div class="ticket-stub" aria-hidden="true">
+              <span class="ticket-age">22</span>
+              <span class="ticket-years">Jahre</span>
+            </div>
+          </div>
+
+          <p class="reward-note">
+            <span class="star-burst" aria-hidden="true"></span>
+            Belohnung: <strong>Happy Birthday + Floss.</strong>
+          </p>
+        </section>
+
+        <section class="quiz-area" aria-label="Geburtstagsrätsel">
+          <div class="quiz-card" id="quizCard">
+            <div class="card-topline">
+              <p class="card-index">Prüfung 01 <span class="index-slash">/</span> 01</p>
+              <span class="subject-pill">Mathe</span>
+            </div>
+
+            <h2 class="question-title">Was ergibt dieser Ausdruck?</h2>
+
+            <div class="equation-panel">
+              <math class="equation" display="block" aria-label="e hoch, Klammer auf, natürlicher Logarithmus von e geteilt durch natürlicher Logarithmus von Fakultät zwei mal zwei zum Quadrat, Klammer zu, mal natürlicher Logarithmus von Fakultät zwei mal zwei zum Quadrat">
+                <msup>
+                  <mi>e</mi>
+                  <mrow>
+                    <mo>(</mo>
+                    <mfrac>
+                      <mrow><mi>ln</mi><mo>&#x2061;</mo><mo>(</mo><mi>e</mi><mo>)</mo></mrow>
+                      <mrow><mi>ln</mi><mo>&#x2061;</mo><mo>(</mo><mo>!</mo><mn>2</mn><mo>&sdot;</mo><msup><mn>2</mn><mn>2</mn></msup><mo>)</mo></mrow>
+                    </mfrac>
+                    <mo>)</mo>
+                    <mo>&sdot;</mo>
+                    <mi>ln</mi><mo>&#x2061;</mo><mo>(</mo><mo>!</mo><mn>2</mn><mo>&sdot;</mo><msup><mn>2</mn><mn>2</mn></msup><mo>)</mo>
+                  </mrow>
+                </msup>
+              </math>
+              <p class="equation-caption">Vereinfache so weit wie möglich.</p>
+            </div>
+
+            <form class="answer-form" id="answerForm" novalidate>
+              <label for="answer">Deine Antwort</label>
+              <div class="answer-row">
+                <div class="input-shell">
+                  <span class="equals-sign" aria-hidden="true">=</span>
+                  <input
+                    id="answer"
+                    name="answer"
+                    type="text"
+                    inputmode="text"
+                    autocomplete="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    placeholder="Antwort"
+                    aria-describedby="feedback hint"
+                  >
+                </div>
+                <button class="submit-button" type="submit">
+                  Prüfen
+                  <span class="button-arrow" aria-hidden="true">&rarr;</span>
+                </button>
+              </div>
+            </form>
+
+            <div class="feedback-area">
+              <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+              <p class="hint" id="hint"></p>
+            </div>
+
+            <div class="card-footer">
+              <span>Kein Taschenrechner nötig.</span>
+              <span class="attempt-dots" id="attemptDots" aria-label="Versuch">
+                <i></i><i></i><i></i>
+              </span>
+            </div>
+          </div>
+
+          <p class="quiz-caption">Ein Rätsel. Eine Party. Mehr muss man nicht wissen.</p>
+        </section>
+      </div>
+
+      <footer class="site-footer">
+        <span>Für Fiete</span>
+        <span class="footer-dot"></span>
+        <span>22. Geburtstag</span>
+        <span class="footer-dot"></span>
+        <span>Floss inklusive</span>
+      </footer>
+    </section>
+
+    <section class="celebration" id="celebration" aria-hidden="true">
+      <div class="party-background" aria-hidden="true">
+        <div class="party-glow glow-coral"></div>
+        <div class="party-glow glow-lime"></div>
+        <div class="party-glow glow-violet"></div>
+        <div class="light-beam beam-one"></div>
+        <div class="light-beam beam-two"></div>
+        <div class="light-beam beam-three"></div>
+        <div class="balloons">
+          <span class="balloon balloon-one"></span>
+          <span class="balloon balloon-two"></span>
+          <span class="balloon balloon-three"></span>
+          <span class="balloon balloon-four"></span>
+        </div>
+      </div>
+
+      <header class="party-header">
+        <p class="mission-chip"><span class="mission-dot"></span> Mission erfüllt</p>
+        <button class="again-button" id="againButton" type="button">
+          Nochmal rätseln
+          <span class="again-icon" aria-hidden="true"></span>
+        </button>
+      </header>
+
+      <div class="party-copy">
+        <p class="party-kicker">Happy Birthday</p>
+        <h2 class="party-title" id="partyTitle" tabindex="-1">
+          <span class="party-name">Fiete</span>
+          <span class="party-age">22<span class="age-period">.</span></span>
+        </h2>
+        <p class="party-sub">22. Geburtstag &mdash; und jetzt flossen alle.</p>
+      </div>
+
+      <div class="stage" aria-label="Menschen tanzen den Floss">
+        <div class="stage-haze" aria-hidden="true"></div>
+        <div class="dancers" id="dancers"></div>
+        <div class="stage-floor" aria-hidden="true"></div>
+      </div>
+
+      <p class="party-footnote" aria-hidden="true">Happy Birthday Fiete / 22 / Floss / Happy Birthday Fiete / 22 / Floss /&nbsp;</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
